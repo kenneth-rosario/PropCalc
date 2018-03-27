@@ -8,7 +8,7 @@ class Calculator:
         self.current_text = text
         label.config(text=self.current_text)
 
-    def compute(self):
+    def compute(self,text, label):
         compute = ComputeTable(self.current_text)
 
     def __init__(self, root):
@@ -29,7 +29,7 @@ class Calculator:
 
         p = Button(middleFrame, text="p", command=lambda: self.set_text(self.current_text+"p", CurrentText), width=10)
         q = Button(middleFrame, text="q", command=lambda: self.set_text(self.current_text+"q", CurrentText), width=10)
-        r = Button(middleFrame, text="r", command=lambda: self.set_text(self.current_text+"r", CurrentText), width=10)
+        r = Button(middleFrame, text="v", command=lambda: self.set_text(self.current_text+"v", CurrentText), width=10)
         p.grid(row=0, column=0)
         q.grid(row=0, column=1)
         r.grid(row=0, column=2)
@@ -40,10 +40,9 @@ class Calculator:
                                                                                     CurrentText), width=10, height= 2)
         or_button = Button(middleFrame, text="\\/", command= lambda: self.set_text(self.current_text+"\\/",
                                                                                     CurrentText), width=10, height= 2 )
-        exclusive_or = Button(middleFrame, text="XOr", command=lambda: self.set_text(self.current_text + "XOr",
+        exclusive_or = Button(middleFrame, text="XOr", command=lambda: self.set_text(self.current_text + "XOR",
                                                                                      CurrentText), width=10, height = 2)
-        implication = Button(middleFrame, text="->", command= lambda: self.set_text(self.current_text+"->",
-                                                                                    CurrentText), width=10, height = 2)
+        implication = Button(middleFrame, text="->", width=10, height = 2)
         biconditional = Button(middleFrame, text="<->", command= lambda: self.set_text(self.current_text+"<->",
                                                                                      CurrentText), width=10, height = 2)
         negation = Button(middleFrame, text="~", command= lambda: self.set_text(self.current_text+" ~",
@@ -53,7 +52,7 @@ class Calculator:
         close_parenthesis = Button(middleFrame, text=")", command= lambda: self.set_text(self.current_text+")",
                                                                                     CurrentText), width=10, height = 2)
         delete = Button(middleFrame, text="C", command= lambda: self.set_text("", CurrentText), width=10, height = 2)
-        compute = Button(middleFrame, text="gen_table", command= self.compute, width=32)
+        compute = Button(middleFrame, text="gen_table", command= lambda:self.compute("", CurrentText), width=32)
         # position
         and_button.grid(row=1, column=0)
         or_button.grid(row=1, column=1)
